@@ -157,7 +157,7 @@ for target in "${FFMPEG_BUILD_TARGETS[@]}"; do
 	
 	declare tarball="${FFMPEG_INSTALL_PREFIX}/${target}.tar.xz"
 	
-	tar --create --file=- "${target}" |  xz --compress -9 > "${tarball}"
+	tar --create --file=- "${target}" |  xz --extreme --threads='0' --compress -9 > "${tarball}"
 	rm --recursive --force "${target}"
 	
 	sha256sum "${tarball}" | sed "s|${FFMPEG_INSTALL_PREFIX}/||" > "${tarball}.sha256"
